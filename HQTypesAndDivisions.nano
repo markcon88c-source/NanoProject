@@ -1,0 +1,42 @@
+NANO_ORGAN HQTypesAndDivisions {
+
+    ENUM HQLevel {
+        THEATER
+        ARMY_GROUP
+        ARMY
+        CORPS
+    }
+
+    STRUCT Brigade {
+        id
+        type        # INF, ARM, MOT, ART, AA, AT, ENG
+        strength
+        org
+    }
+
+    STRUCT Division {
+        id
+        name
+        brigades[]  # list of Brigade
+        role        # INF, ARM, MOT, SPECIAL
+        position
+        hq
+    }
+
+    STRUCT HQ {
+        id
+        level       # HQLevel
+        parent
+        children[]
+        units[]     # list of Division
+        zone        # theater/front segment
+        pressure
+        load
+        distance
+    }
+
+    PROVIDES:
+        HQLevels
+        DivisionTemplates
+        BrigadeTypes
+}

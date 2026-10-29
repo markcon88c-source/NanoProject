@@ -1,0 +1,60 @@
+class TickOrgan:
+    """
+    The organism’s metabolic cycle.
+    Each tick:
+    - emits a lexical packet
+    - observes mathblock similarity (hinge edges)
+    - reinforces used edges
+    - decays unused edges
+    - stores working memory (short-term semantic context)
+    """
+
+    def __init__(self, lexical, hinge, graph):
+        self.lexical = lexical
+        self.hinge = hinge
+        self.graph = graph
+
+        # organism’s working memory (semantic short-term storage)
+        self.memory = []
+        self.max_memory = 12
+
+    # ---------------------------------------------------------
+    # Reinforce edges that appear in memory adjacency
+    # ---------------------------------------------------------
+    def reinforce_edges(self):
+        if len(self.memory) < 2:
+            return
+
+        # strengthen edges between consecutive memory words
+        for a, b in zip(self.memory[:-1], self.memory[1:]):
+            for i, (src, dst, w, meta) in enumerate(self.graph.edges):
+                if src == a and dst == b:
+                    self.graph.edges[i] = (src, dst, w * 1.05, meta)
+
+    # ---------------------------------------------------------
+    # Decay unused edges
+    # ---------------------------------------------------------
+    def decay_edges(self):
+        for i, (src, dst, w, meta) in enumerate(self.graph.edges):
+            self.graph.edges[i] = (src, dst, w * 0.98, meta)
+
+    # ---------------------------------------------------------
+    # Main metabolic tick
+    # ---------------------------------------------------------
+    def tick(self):
+        # 1. Emit lexical packet
+        packet = self.lexical.emit()
+
+        # 2. Feed hinge generator
+        self.hinge.observe(packet)
+
+        # 3. Add to working memory
+        self.memory.append(packet["word"])
+        if len(self.memory) > self.max_memory:
+            self.memory.pop(0)
+
+        # 4. Reinforce edges that match memory adjacency
+        self.reinforce_edges()
+
+        # 5. Decay unused edges
+        self.decay_edges()

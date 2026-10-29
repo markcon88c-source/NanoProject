@@ -1,0 +1,18 @@
+{
+    "LexicalOrgan": "organs.lexical.lexical_organ",
+    "CategoryOrgan": "organs.sentences.category_organ",
+    "SoftDefinitionOrgan": "organs.sentences.soft_definition_organ",
+    "MicroPhraseOrgan": "organs.sentences.micro_phrase_organ",
+    "ProtoSentenceOrgan": "organs.sentences.proto_sentence_organ",
+    "SentenceOrgan": "organs.sentences.sentence_organ",
+    "AssociativeValenceOrgan": "organs.association.associative_valence_organ",
+    "RecursionOrgan": "organs.recursion.recursion_organ",
+    "CuriosityOrgan": "organs.curiosity.curiosity_organ",
+    "GraphOrgan": "organs.graph.hinge_graph",
+    "HingeOrgan": "organs.hinge.hinge_organ",
+    "NeuralHeart": "organs.heart.neural_heart",
+    "ChainOrgan": "organs.chains.chain_organ",
+    "TickOrgan": "organs.tick.tick_organ",
+
+    "EmergenceOrgan": "organs.emergence.emergence_organ"
+}

@@ -1,0 +1,15 @@
+{
+    "ReorganizationNano.apply_reorganization": "a3de35e1307ca2b30917e0a526f48ae0667d1b3e1cb63208aad80889126e69b0",
+    "AlwaysThinkingHQ.always_thinking": "9ea97800046d6fb927e1566df36f7105854953ed6b62602b98d180657696985e",
+    "SupplyNano.update_supply": "59fa156f2eb89c15527aa1954bde609e36d106c59be1d61debec04a590dc2d98",
+    "LeadershipNano.update_leadership": "9ae236abafc5a9f262bb732da9b2d4b2d86314c1cfb5a83903fface66f297923",
+    "TerrainNano.update_terrain": "f549ed2c0c8649593135cac47c0bfb2917b205e6a2a1196de54b8af6742436f7",
+    "HQTypesAndDivisions.HQ": "006e7bee8e30f01bfaeabcb3e49c5ddc2e63107d92bddcbc7c0dcda8a912a59a",
+    "HQTypesAndDivisions.Front": "2ba89a5c6f8b46e8ac638226e49c82946dec44b8d83f8d77110407fe1792b2fc",
+    "HQTypesAndDivisions.create_theater_hq": "416d5afef9dcb172441584871f58df20ea21b6f3d8fd2b4b1a43e252a1665f3f",
+    "HQTypesAndDivisions.create_army_group_hq": "869a1dd1406042860599371b0347bb402687d4018c6e45e573b7d32fe083add7",
+    "HQTypesAndDivisions.create_army_hq": "fb09cecc92a40b19081ec58fb30eae77b1777adc71b90b830a015dc6d1a26295",
+    "HQTypesAndDivisions.create_corps_hq": "1ce72fcc2cb824f44de8833e402764e4100dd022fb9d27509cd565aafd464a9f",
+    "HQTypesAndDivisions.WorldState": "a00d1b66ba80d5f6d6e01d7dd0db98d589ddce5ad57d84137fd48705a560ebe4",
+    "AirPowerNano.AirPowerNano": "53d42ba15d3e40da1542d6878e7be293cc96c12d6ffa03d12f32b9731939e741"
+}

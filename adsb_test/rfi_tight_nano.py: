@@ -1,0 +1,47 @@
+# rfi_tight_full.py
+
+LOG_FILE = "interesting_events.log"
+TOL_MHZ = 0.005      # ~5 kHz buckets
+PERSIST_MIN = 50     # hits to call RFI
+OUTSIDE_FACTOR = 2   # how far outside window we still consider "same freq"
+
+def bucket_freq(freq_mhz):
+    return round(freq_mhz / TOL_MHZ) * TOL_MHZ
+
+def build_rfi_map():
+    counts = {}
+    windows = {}
+    with open(LOG_FILE) as f:
+        for line in f:
+            parts = line.split()
+            if len(parts) < 8:
+                continue
+            frame = int(parts[0])
+            peak_mhz = float(parts[5])
+            win_low = float(parts[6])
+            win_high = float(parts[7])
+
+            b = bucket_freq(peak_mhz)
+            counts[b] = counts.get(b, 0) + 1
+            windows.setdefault(b, []).append((win_low, win_high))
+
+    rfi_freqs = {f for f, c in counts.items() if c >= PERSIST_MIN}
+
+    print("[RFI] Persistent tight frequencies:")
+    for f in sorted(rfi_freqs):
+        wlist = windows.get(f, [])
+        w_span = (
+            min(w[0] for w in wlist),
+            max(w[1] for w in wlist)
+        )
+        print("  %.6f MHz (hits=%d) spans windows %.6f–%.6f MHz"
+              % (f, counts[f], w_span[0], w_span[1]))
+
+    return rfi_freqs
+
+def is_rfi(freq_mhz, rfi_freqs):
+    b = bucket_freq(freq_mhz)
+    return b in rfi_freqs
+
+if __name__ == "__main__":
+    rfi_freqs = build_rfi_map()
